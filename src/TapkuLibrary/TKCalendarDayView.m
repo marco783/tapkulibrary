@@ -188,17 +188,16 @@
 	
 	NSInteger cnt = 0;
 	NSArray *daySymbols = [[NSCalendar currentCalendar] shortWeekdaySymbols];
-	CGFloat wid = CGRectGetWidth(self.frame);
-	CGFloat xmargin = 20;
-	wid -= 8;
+
+    CGFloat sectionWidth =  (CGRectGetWidth(self.frame)) / 7;
+    CGFloat xSpan = (sectionWidth / 2) - (40 / 2);
 	
 	for(NSString *str in daySymbols){
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(xmargin + cnt* wid/daySymbols.count, 0, 40, 20)];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((sectionWidth * cnt) + xSpan, 0, 40, 20)];
 		label.font = [UIFont systemFontOfSize:10];
 		label.text = [str substringToIndex:1];
 		label.textColor = cnt == 0 || cnt == 6 ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
 		label.textAlignment = NSTextAlignmentCenter;
-		[label sizeToFit];
 		label.userInteractionEnabled = NO;
 		[self.daysBackgroundView addSubview:label];
 		cnt++;
@@ -1135,10 +1134,12 @@
 - (instancetype) initWithFrame:(CGRect)frame{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	
+    CGFloat sectionWidth =  CGRectGetWidth(self.frame) / 7;
+    CGFloat xSpan = (sectionWidth / 2) - (DAY_LABEL_WIDTH / 2);
 	
 	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:7];
 	for(NSInteger i=0;i<7;i++){
-		TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(8+(DAY_LABEL_WIDTH+9)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
+        TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake((sectionWidth * i) + xSpan, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
 		label.weekend = i % 6 == 0;
 		[self addSubviewToBack:label];
 		[labels addObject:label];
