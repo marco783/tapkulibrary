@@ -1082,7 +1082,7 @@
             NSDate *endDate = [gregorian dateFromComponents: components];
             
             if (tmpEvent == nil){
-                tmpEvent = [TKCalendarDayEventView eventViewWithIdentifier:[NSNumber numberWithInt:-1] startDate:startDate endDate:endDate title:@"Test" location:@""];
+                tmpEvent = [TKCalendarDayEventView eventViewWithIdentifier:[NSNumber numberWithInt:-1] startDate:startDate endDate:endDate title:@"New event" location:@""];
                 tmpEvent.tag = 999;
                 
                 [self addSubview:tmpEvent];
