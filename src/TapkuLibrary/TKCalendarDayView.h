@@ -26,7 +26,7 @@
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
  
-*/
+ */
 
 @import UIKit;
 #import "TKCalendarDayEventView.h"
@@ -93,6 +93,12 @@
  @param date The `NSDate` object of the day timeline that was brought to focus.
  */
 - (void) calendarDayTimelineView:(TKCalendarDayView*)calendarDay didMoveToDate:(NSDate*)date;
+
+/** The event view that was created.
+ @param calendarDay The calendar day view.
+ @param eventView The `TKCalendarDayEventView` that was created.
+ */
+- (void) calendarDayTimelineView:(TKCalendarDayView*)calendarDay eventViewWasCreated:(TKCalendarDayEventView *)eventView;
 
 @end
 
